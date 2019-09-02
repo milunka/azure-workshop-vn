@@ -1,0 +1,4 @@
+az login
+az account set --subscription HCVN_NONPROD
+az appservice plan create --name mku-appservice-plan --resource-group HCVN_WORKSHOP_1 --sku B1 --is-linux -l southeastasia --tags Owner=miroslav.kulha@embedit.cz
+az webapp create --resource-group HCVN_WORKSHOP_1 --plan mku-appservice-plan --name mku-workshop-vn --deployment-container-image-name microsoft/azure-appservices-go-quickstart
