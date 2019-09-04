@@ -1,4 +1,15 @@
+# Login to Azure with your company credentials
+#   this command will open for you web browser where you will authorize with your company credentials
 az login
+
+# This command set your working environment to use one specific subscription
 az account set --subscription HCVN_NONPROD
-az appservice plan create --name mku-appservice-plan --resource-group HCVN_WORKSHOP_1 --sku B1 --is-linux -l southeastasia --tags Owner=miroslav.kulha@embedit.cz
-az webapp create --resource-group HCVN_WORKSHOP_1 --plan mku-appservice-plan --name mku-workshop-vn --deployment-container-image-name microsoft/azure-appservices-go-quickstart
+
+# This command will create basic app service plan with specific name in your nearest location
+# Created appservice will have configured recommended tags with information about owner of that appservice
+az appservice plan create --name mku-appservice-plan --resource-group HCVN_WORKSHOP_1 \
+    --sku B1 --is-linux -l southeastasia --tags Owner=miroslav.kulha@embedit.cz
+
+# This command will create web app with one running container which will contain very basic application
+az webapp create --resource-group HCVN_WORKSHOP_1 --plan mku-appservice-plan \
+    --name mku-workshop-vn --deployment-container-image-name microsoft/azure-appservices-go-quickstart
